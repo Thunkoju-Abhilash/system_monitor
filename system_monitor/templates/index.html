@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Linux System Monitor</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>Linux System Resource Monitor (/proc)</h1>
+
+<div class="card">
+    <h3>CPU Usage</h3>
+    <p>{{ cpu }}%</p>
+</div>
+
+<div class="card">
+    <h3>Memory Usage</h3>
+    <p>Total: {{ total }} MB</p>
+    <p>Used : {{ used }} MB</p>
+    <p>Free : {{ free }} MB</p>
+</div>
+
+<div class="card">
+    <h3>Top 20 Processes</h3>
+    <table>
+        <tr>
+            <th>PID</th>
+            <th>Name</th>
+            <th>State</th>
+        </tr>
+
+        {% for pid, name, state in processes %}
+        <tr>
+            <td>{{ pid }}</td>
+            <td>{{ name }}</td>
+            <td>{{ state }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+
+</body>
+</html>
